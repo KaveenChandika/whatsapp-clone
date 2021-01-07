@@ -12,12 +12,16 @@ function Chat({messages}) {
 
     const sendMessages = async (e) =>{
         e.preventDefault();
-        await axios.post('/messages/new',{
-            message:input,
-            name:"DEMO APP",
-            timestamp:"JUST NOW!",
-            received:true
-        });
+        if(input){
+            await axios.post('/messages/new',{
+                message:input,
+                name:"DEMO APP",
+                timestamp:"JUST NOW!",
+                received:true
+            });
+        }else{
+            alert("Please set you message");
+        }
 
         setInput("")
     }
